@@ -15,14 +15,21 @@ function run(applicationData, lenders) {
   let isRepaymentET;
 
 
-  //Verify correctness of user input.
-  //Therefore also checking for the minimum amount and repayment years
-  //Returns an empty array if the amount entered by user is less than 100 and the repaymentYears is less than 1.
+  /**
+   * Verify correctness of user input.
+   * Therefore also checking for the minimum amount and repayment years
+   * Returns an empty array if the amount entered by user is less than 
+   * 100 and the repaymentYears is less than 1.
+   */
   if (applicationData.amount < 100 || applicationData.repaymentYears < 1) {
     return [];
   }
 
-  //loop through each bank(lenders) and for each bank loop through its rules, Check if the amount and repaymentYears entered by the user fits the conditions in the array, set its respective variables to true.
+  /**
+   * loop through each bank(lenders) and for each bank loop through its rules, 
+   * Check if the amount and repaymentYears entered by the user fits the conditions
+   * in the array, set its respective variables to true.
+   */
 
   lenders.forEach((bank) => {
     isAmountGT = true;
@@ -57,7 +64,10 @@ function run(applicationData, lenders) {
       }
     });
 
-    //If all the conditions are true then push the name of the qualified banks to the array.
+    /** 
+     * If all the conditions are true then push the name of 
+     * the qualified banks to the array.
+     */
 
     if (isAmountGT && isAmountLT && isAmountET && isRepaymentGT && isRepaymentLT && isRepaymentET) {
       const lender = { name: bank.name };

@@ -22,10 +22,6 @@ app.post("/submit", async (req, res) => {
     repaymentYears,
   };
 
-//  rulesEngine.run(applicationData, lenders).map((lender) => {
-//      return sendToBank(lender);
-//   });
-  
   Promise.all(rulesEngine.run(applicationData, lenders).map((lender) => {
     return sendToBank(lender);
  })).then((data) => {
